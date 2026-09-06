@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "soccer-autocam"
+version = "1.0.0"
+description = "Auto-framed youth soccer footage from a fixed 4K camera, with a telemetry sidecar."
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=1.26",
+    "scipy>=1.11",
+    "av>=12.0",
+    "click>=8.1",
+]
+
+[project.optional-dependencies]
+# The YOLO backend. Kept optional so every module except detect.yolo imports
+# (and every test runs) on a machine without torch.
+detect = [
+    "ultralytics>=8.3",
+    "torch>=2.2",
+]
+# Interactive four-corner pitch calibration.
+gui = [
+    "matplotlib>=3.8",
+]
+dev = [
+    "pytest>=8.0",
+]
+
+[project.scripts]
+autocam = "autocam.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["autocam*"]
+
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

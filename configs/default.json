@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "ingest": {
+    "min_source_width": 3840,
+    "min_source_height": 2160,
+    "honour_rotation_metadata": true
+  },
+  "detect": {
+    "backend": "yolo",
+    "model": "yolo11n.pt",
+    "device": "mps",
+    "person_class_id": 0,
+    "detect_hz": 10.0,
+    "infer_long_edge": 1280,
+    "conf_min": 0.35,
+    "bbox_area_min": 2.0e-5,
+    "bbox_area_max": 0.02
+  },
+  "centroid": {
+    "mad_k": 3.0,
+    "min_players": 4,
+    "spread_metric": "iqr"
+  },
+  "control": {
+    "deadzone": 0.03,
+    "omega_n": 0.8,
+    "zeta": 1.0,
+    "max_pan_vel": 0.18,
+    "max_pan_accel": 0.5,
+    "lead_gain": 0.35,
+    "lead_max": 0.08,
+    "lead_vel_tau": 0.5
+  },
+  "render": {
+    "out_width": 1920,
+    "out_height": 1080,
+    "crop_y_mode": "pitch",
+    "crop_y_frac": 0.5,
+    "codec": "libx264",
+    "crf": 20,
+    "preset": "medium",
+    "pix_fmt": "yuv420p",
+    "copy_audio": true,
+    "preview_duration_s": 60.0,
+    "preview_height": 720,
+    "preview_crf": 26,
+    "preview_preset": "veryfast",
+    "preview_copy_audio": false
+  },
+  "events": {
+    "attacking_third_debounce_s": 5.0,
+    "transition_vel_threshold": 0.10,
+    "transition_min_duration_s": 1.0,
+    "transition_debounce_s": 3.0
+  },
+  "quality": {
+    "invalid_run_warn_s": 2.0,
+    "invalid_frame_pct_warn": 10.0,
+    "mean_players_warn": 8.0
+  },
+  "phase2": {
+    "deadzone_scale": 2.0,
+    "pan_limit_deg": 60.0,
+    "fov_h_deg": 68.0,
+    "watchdog_ms": 2000,
+    "notify_hz": 20,
+    "max_vel_centideg_per_s": 6000
+  }
+}
