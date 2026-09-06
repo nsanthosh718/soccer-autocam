@@ -1,0 +1,18 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+
+# Derived artefacts -- never commit footage or its sidecars
+*.mp4
+*.mov
+*.MOV
+*.detections.json
+*.telemetry.json
+*.pitch.json
+*.sample/
+!configs/*.json
